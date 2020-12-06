@@ -1,0 +1,88 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+form {
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    width: 70%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+form div {
+    padding: 15px;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+input[type="text"]:focus{
+    border-bottom: 1px solid #1a73a8;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0071f0;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(0, 113, 240, 0.7);
+}
+
+.cancel {
+    text-decoration:none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #F20054;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel:hover {
+    background-color: rgba(242, 0, 84, 0.7);
+}
+
+.refresh {
+    text-decoration:none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #00F250;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.refresh:hover {
+    background-color: rgba(0, 242, 80, 0.7);
+}

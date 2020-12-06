@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    padding: 30px;
+    padding-top: 10px;
+}
+
+.container .h1-logo {
+    align-items: center;
+    text-align: center;
+}
+
+.container .h1-logo h1 {
+    color: rgb(21, 38, 73);
+    font-size: 80px;
+    font-weight: 30;
+}
+
+.container .h2-logo h2 {
+    text-align: center;
+    color: #438AAD;
+    font-size: 2.28571em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.travels-rows:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.travels-column {
+    text-align: center;
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+.travels-mini {
+    text-align: left;
+    margin: 0 auto;
+    box-shadow: 0 4px 16px #ccc;
+    border-radius: 10px;
+    height: 430px;
+    width: 345px;
+}
+
+.travels-mini img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.botton-box {
+    text-align: right;
+    margin-top: 12px;
+}
+
+.travels-mini-info {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.travels-mini p {
+    font-size: 15px;
+    color: #4A4A4A;
+}
+
+.travels-mini h3 {
+    font-weight:normal;
+    color: rgb(21, 38, 73);
+    font-size: 40px;
+}
+
+.travels-mini h4 {
+    font-weight:normal;
+    font-size: 12px;
+}
+
+.inline {
+    display: flex;
+    margin-top: 20px;
+}
+
+.inline p {
+    font-size: 15px;
+    color: #4A4A4A;
+    margin-right: 4px;
+}
+
+.euro {
+    font-weight:normal;
+    font-size: 25px;
+}

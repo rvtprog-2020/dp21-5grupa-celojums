@@ -1,0 +1,64 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.list_ul {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+li div h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.list_div {
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    padding-bottom: 20px;
+    width: 70%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}
+
+.buttons_div {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.edit {
+    text-decoration:none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #00DA48;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.edit:hover {
+    background-color: rgba(0, 218, 72, 0.7);
+}
+
+.delete {
+    text-decoration:none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #F20054;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete:hover {
+    background-color: rgba(242, 0, 84, 0.7);
+}

@@ -1,0 +1,39 @@
+
+.list_ul {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+li div h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.list_div {
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    padding-bottom: 20px;
+    width: 70%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}
+
+.search-box {
+    position: absolute;
+    left: 50%;
+    top: 7%;
+    transform: translate(-50%, 50%);
+}
+
+.search-box input {
+    height: 40px;
+    width: 300px;
+    outline: none;
+    border: 3px solid #34495e;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-radius: 50px;
+    padding: 0 10px;
+}

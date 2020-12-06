@@ -1,0 +1,37 @@
+{% extends "layout-admin.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+{% endblock %}
+
+{% block body %}
+    <form action="/update/{{id}}" method="POST">
+        <h1>Edit post</h1>
+        <div>
+            <input type="text" name="from" placeholder="From county" value="{{from_c}}">
+        </div>
+        <div>
+            <input type="text" name="to" placeholder="To county" value="{{to_c}}">
+        </div>
+        <div>
+            <input type="text" name="agency" placeholder="Travel agency" value="{{agency}}">
+        </div>
+        <div>
+            <input type="text" name="start" placeholder="Start date" value="{{start}}">
+        </div>
+        <div>
+            <input type="text" name="end" placeholder="End date" value="{{end}}">
+        </div>
+        <div>
+            <input type="text" name="price" placeholder="Price" value="{{price}}">
+        </div>
+        <div>
+            <input type="text" name="seats" placeholder="Total seats" value="{{seats}}">
+        </div>
+        <div>
+            <input type="submit" value="Update"> 
+            <a class="cancel" href="/view">Cancel</a>
+            <a class="refresh" href="">Refresh</a>
+        </div>
+    </form>
+{% endblock %}

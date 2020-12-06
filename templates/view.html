@@ -1,0 +1,12 @@
+{% extends "layout-admin.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/getPosts.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <ul class="list_ul" id="posts">
+
+    </ul>
+{% endblock %}

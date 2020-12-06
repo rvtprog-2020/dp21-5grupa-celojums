@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Login</title>
+</head>
+<body>
+    <form action="" method="POST">
+        <h1>Control Panel</h1>
+        <div>
+            <input name="name" type="text" placeholder="Name">
+        </div>
+        <div>
+            <input name="password" type="password" placeholder="Password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
