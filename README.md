@@ -2,8 +2,8 @@
 
   - Oļegs Pašins - Programmer/Designer | (HTML + CSS + Python + MongoDB + JavaScript)
   - Aleksejs Sviklis - Programmer | (CSS + HTML + Python + JavaScript)
-  - Ģlebs Jevsikovs - Designer | (CSS + Figma)
-  - Daniils Srednikavs - Designer | (CSS + Figma)
+  - Ģlebs Jevsikovs - Designer | (JavaScript + CSS + Figma)
+  - Daniils Srednikavs - Designer | (JavaScript + CSS + Figma)
 
 # URL's:
 
