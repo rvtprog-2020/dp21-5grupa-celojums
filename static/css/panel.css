@@ -6,6 +6,10 @@ body, html {
     background: white;
 }
 
+.form {
+    padding-bottom: 40px;
+}
+
 form {
     margin: auto;
     margin-top: 50px;
@@ -24,6 +28,13 @@ h1 {
 form div {
     padding: 15px;
     text-align: center;
+}
+
+form div .label {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 input[type="text"] {

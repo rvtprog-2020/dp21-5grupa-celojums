@@ -5,31 +5,54 @@
 {% endblock %}
 
 {% block body %}
-    <form action="" method="POST">
-        <h1>Make a new Post</h1>
-        <div>
-            <input type="text" name="from_c" placeholder="From county">
-        </div>
-        <div>
-            <input type="text" name="to_c" placeholder="To county">
-        </div>
-        <div>
-            <input type="text" name="agency" placeholder="Travel agency">
-        </div>
-        <div>
-            <input type="text" name="start" placeholder="Start date">
-        </div>
-        <div>
-            <input type="text" name="end" placeholder="End date">
-        </div>
-        <div>
-            <input type="text" name="price" placeholder="Price">
-        </div>
-        <div>
-            <input type="text" name="seats" placeholder="Total seats">
-        </div>
-        <div>
-            <input type="submit" value="Make Post">
-        </div>
-    </form>
+    <div class="form">
+        <form action="" method="POST">
+            <h1>Make a new flight</h1>
+            <div>
+                <div class="label">
+                    <label>From country:</label>
+                </div>
+                <input type="text" name="from_c" placeholder="Latvia, Riga">
+            </div>
+            <div>
+                <div class="label">
+                    <label>To country:</label>
+                </div>
+                <input type="text" name="to_c" placeholder="Poland, Varsava">
+            </div>
+            <div>
+                <div class="label">
+                    <label>Travel agency:</label>
+                </div>
+                <input type="text" name="agency" placeholder="Novatours">
+            </div>
+            <div>
+                <div class="label">
+                    <label>Start date:</label>
+                </div>
+                <input type="text" name="start" placeholder="10.01.20 8:30">
+            </div>
+            <div>
+                <div class="label">
+                    <label>End date:</label>
+                </div>
+                <input type="text" name="end" placeholder="19.01.20 4:10">
+            </div>
+            <div>
+                <div class="label">
+                    <label>Price:</label>
+                </div>
+                <input type="text" name="price" placeholder="900">
+            </div>
+            <div>
+                <div class="label">
+                    <label>Total seats:</label>
+                </div>
+                <input type="text" name="seats" placeholder="90">
+            </div>
+            <div>
+                <input type="submit" value="Make Post">
+            </div>
+        </form>
+    </div>
 {% endblock %}

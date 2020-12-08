@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/register-control.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="/register" method="POST">
+        <h1>Welcome to Latvian Airlines</h1>
+        <div>
+            <div class="flash">
+                <p>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for msg in messages %}
+                    This username has already been taken
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+                 </p>
+            </div>
+            <input id="username" name="username" type="text" placeholder="Username">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <input id="name" name="name" type="text" placeholder="Name">
+                </div>
+                <div>
+                    <input id="last-name" name="last-name" type="text" placeholder="Last name">
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <input id="password" name="password" type="password" placeholder="Password">
+                </div>
+                <div>
+                    <input id="password-confirm" name="password-confirm" type="password" placeholder="Confirm your password">
+                </div>
+            </div>
+        </div>
+        <div class="radio">
+            <input id="robot" type="checkbox" name="robot"> I'am not a robot!
+        </div>
+        <div class="button-box">
+            <button id="button" type="botton">Sign in</button>
+        </div>
+    </form>
+</body>
+</html>

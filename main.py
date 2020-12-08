@@ -1,25 +1,37 @@
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, flash, render_template, url_for, request, redirect, session
 from pymongo import MongoClient
 from bson.json_util import dumps
 
 app = Flask(__name__)
 app.secret_key = "hkIbg#45f1_"
 
-# A6muTqLJ1cCEFaOK
-
 client = MongoClient("mongodb+srv://oleg:A6muTqLJ1cCEFaOK@posts-db.gzxb0.mongodb.net/posts?retryWrites=true&w=majority")
 
 db = client.posts
 posts_db = db.posts_info
 
-#posts = {"from":"Latvia, Riga", "to":"Poland, Varsava","agency":"Novatours","start":"10.01.20 8:30","end":"19.01.20 4:30","price":"869","seats":"144"}
-#posts_db.insert_one(posts)
+db = client.users
+users_db = db.users_info
 
 @app.route('/data')
 def posts():
     data_posts = posts_db.find()
     data = list(data_posts)
     return dumps(data)
+
+@app.route("/profile", methods=["GET","POST"])
+def profile():
+    if "username_user" in session or "password_user" in session:
+        return render_template("profile.html")
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/purchases", methods=["GET","POST"])
+def purchases():
+    if "username_user" in session or "password_user" in session:
+        return render_template("purchases.html")
+    else:
+        return redirect(url_for("login"))
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -29,19 +41,103 @@ def index():
 
 @app.route("/home", methods=["GET","POST"])
 def home():
-    return render_template("home.html")
+    if "username_user" in session or "password_user" in session:
+        return render_template("home-user.html")
+    else:
+        return render_template("home.html")
 
 
 
 @app.route("/about", methods=["GET","POST"])
 def about():
-    return render_template("about.html")
+    if "username_user" in session or "password_user" in session:
+        return render_template("about-user.html")
+    else:
+        return render_template("about.html")
 
 
 
 @app.route("/search", methods=["GET","POST"])
 def search():
-    return render_template("search.html")
+    if "username_user" in session or "password_user" in session:
+        return render_template("search-user.html")
+    else:
+        return render_template("search.html")
+
+
+
+@app.route("/login-user", methods=["GET","POST"])
+def login_user():
+    if "username_user" in session or "password_user" in session:
+        return redirect(url_for("home"))
+    else:
+        if request.method == 'POST':
+            username_user = request.form['username_user']
+
+            username_lower_user = username_user.lower()
+            password_user = request.form['password_user']
+
+            a = users_db.find_one({"username_lower":username_lower_user})
+            b = users_db.find_one({"username_lower":username_lower_user},{"password":password_user})
+
+            if a != None or b != None:
+                a = a['username_lower']
+                b = b['password']
+
+            if a != username_lower_user or b != password_user:
+                flash("User is not found")
+                return render_template("login-user.html")
+
+            session["username_user"] = username_user
+            session["password_user"] = password_user
+
+            return redirect(url_for("home"))
+
+        else:
+            return render_template("login-user.html")
+
+
+
+@app.route("/register", methods=["GET","POST"])
+def register():
+    if "username_user" in session or "password_user" in session:
+        return redirect(url_for("home"))
+    else:
+        if request.method == 'POST':
+
+            with open('last_id.txt', 'r') as file:
+                data = file.read().replace('\n', '')
+                id_ = int(data)
+
+            id_ += 1
+
+            with open('last_id.txt', 'a') as file:
+                file.truncate(0)
+                file.write(str(id_))
+                file.close()
+
+            username_user = request.form['username']
+            name_user = request.form['name']
+            last_name_user = request.form['last-name']
+            password_user = request.form['password']
+            username_lower_user = username_user
+            username_lower_user = username_lower_user.lower()
+
+            a = users_db.find_one({"username_lower":username_lower_user})
+            if a != None:
+                a = a['username_lower']
+
+            if a == username_lower_user:
+                flash("This username has already been taken")
+                return render_template("register.html")
+
+            session["username_user"] = username_user
+            session["password_user"] = password_user
+
+            users_db.insert_one({"id":id_, "username":username_user, "username_lower":username_lower_user, "name":name_user,"last-name":last_name_user,"password":password_user})
+            return render_template("successful.html")
+        else:
+            return render_template("register.html")
 
 
 
@@ -50,6 +146,7 @@ def login():
     if "name" in session and "password" in session:
         if session["name"] == "root" and session["password"] == "sb3125":
             return redirect(url_for("panel"))
+
     if request.method == "POST":
         name = request.form["name"]
         password = request.form["password"]
@@ -72,11 +169,9 @@ def panel():
                     id_ = int(data)
 
                 id_ += 1
-                print(data)
-                print(type(data))
 
                 with open('last_id.txt', 'a') as file:
-                    file. truncate(0)
+                    file.truncate(0)
                     file.write(str(id_))
                     file.close()
 
@@ -103,7 +198,9 @@ def panel():
 def logout():
     session.pop("name", None)
     session.pop("password", None)
-    return redirect(url_for("login"))
+    session.pop("username_user", None)
+    session.pop("password_user", None)
+    return redirect(url_for("home"))
 
 
 
@@ -175,4 +272,4 @@ def delete(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)

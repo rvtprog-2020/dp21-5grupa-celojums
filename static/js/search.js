@@ -1,3 +1,4 @@
-let lists = document.querySelectorAll('.list_div li div h1');
-
-console.log(lists)
+document.querySelector('#search-info').oninput = function () {
+    let val = this.value.trim();
+    console.log(val)
+}
