@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 32px;
+    margin-left: 75px;
+    margin-right: 75px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}
+
+.container h1 {
+    font-weight: normal;
+}
+
+
+.container h2 {
+    font-weight: normal;
+}
+
+.container h3 {
+    margin: 15px;
+    margin-left: 0;
+    font-weight: normal;
+    font-size: 30px;
+    color: #1E8E2E;
+}
+
+.container p {
+    margin-top: 28px;
+    margin-left: 15px;
+    color: silver;
+}
+
+.price {
+    display: flex;
+}
+
+.card-input {
+    margin: 0;
+    padding: 0;
+}
+
+form div .label {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input[type="text"],input[type="password"] {
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,input[type="password"]:focus {
+    border-bottom: 1px solid #1a73a8;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form .button{
+    text-align: center;
+    margin-top: 25px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0071f0;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(0, 113, 240, 0.7);
+}
+
+h1 {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.col {
+    text-align: left;
+    float: left;
+    width: 50%;
+    padding-right: 5px;
+    margin-bottom: 0;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-bottom: 0;
+}
+
+.note {
+    margin-top: 120px;
+}
+
+.flash p{
+    margin-top: 28px;
+    margin-left: 15px;
+    color: red;
+}

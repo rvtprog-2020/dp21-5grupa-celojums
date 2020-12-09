@@ -1,0 +1,75 @@
+{% extends "layout-user-logined.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>{{from_c}} - {{to_c}}</h1>
+                <h2>{{start}} - {{end}}</h2>
+                <div class="price">
+                    <p>Price:</p>
+                    <h3>{{price}}€</h3>
+                </div>
+                <div class="note">
+                    <p>Note: Card data is using only for payment!</p>
+                </div>
+                <div class="flash">
+                    <p>
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      {% for msg in messages %}
+                        You have not fully entered payment details
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <form action="/book/{{id}}" method="POST">
+                    <h1>Please input your card details</h1>
+                    <div>
+                        <div class="label">
+                            <label>Card number:</label>
+                        </div>
+                        <input name="card_number" type="text" placeholder="4503300000000008">
+                    </div>
+                    <div class="label">
+                        <label>Date:</label>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <input name="date_1"type="text" maxlength="2" placeholder="12">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <input name="date_2"type="text" maxlength="2" placeholder="20">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="label">
+                            <label>Name and lastname:</label>
+                        </div>
+                        <input name="name_lastname"type="text" placeholder="Alex Jordan">
+                    </div>
+                    <div>
+                        <div class="label">
+                            <label>CVV:</label>
+                        </div>
+                        <input name="cvv"type="password" maxlength="3" placeholder="123">
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Buy now">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

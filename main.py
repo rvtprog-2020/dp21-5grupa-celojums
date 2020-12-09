@@ -66,6 +66,15 @@ def search():
 
 
 
+@app.route("/successful", methods=["GET","POST"])
+def successful():
+    if "username_user" in session or "password_user" in session:
+            return render_template("successful-payment.html")
+    else:
+        return redirect(url_for("home"))
+
+
+
 @app.route("/login-user", methods=["GET","POST"])
 def login_user():
     if "username_user" in session or "password_user" in session:
@@ -134,7 +143,7 @@ def register():
             session["username_user"] = username_user
             session["password_user"] = password_user
 
-            users_db.insert_one({"id":id_, "username":username_user, "username_lower":username_lower_user, "name":name_user,"last-name":last_name_user,"password":password_user})
+            users_db.insert_one({"id":id_, "travels_id":[],"username":username_user, "username_lower":username_lower_user, "name":name_user,"last-name":last_name_user,"password":password_user})
             return render_template("successful.html")
         else:
             return render_template("register.html")
@@ -213,6 +222,54 @@ def view():
             return redirect(url_for("login"))
     else:
         return redirect(url_for("login"))
+
+
+
+@app.route("/book/<int:id>", methods=["GET","POST"])
+def book(id):
+    if "username_user" in session or "password_user" in session:
+        if request.method == 'POST':
+
+            card_number = request.form['card_number']
+            date_1 = request.form['date_1']
+            date_2 = request.form['date_2']
+            name_lastname = request.form['name_lastname']
+            cvv = request.form['cvv']
+
+            if card_number == "" or date_1 == "" or date_2 == "" or name_lastname == "" or cvv == "":
+                flash("fail")
+                
+                posts_to_book = posts_db.find_one({"id":id})
+
+                from_c = posts_to_book['from_c']
+                to_c = posts_to_book['to_c']
+                start = posts_to_book['start']
+                end = posts_to_book['end']
+                price = posts_to_book['price']
+                return render_template("book.html", id=id, from_c=from_c, to_c=to_c, start=start, end=end, price=price)
+            else:
+
+                name = session["username_user"]
+
+                travels_id = users_db.find_one({"username_lower":name})
+
+                travels_id['travels_id'].insert(0,id)
+                x = travels_id['travels_id']
+
+                users_db.update_one({"username_lower":name}, {"$set": {"travels_id":x}})
+                return redirect(url_for("successful"))
+
+        else:
+            posts_to_book = posts_db.find_one({"id":id})
+
+            from_c = posts_to_book['from_c']
+            to_c = posts_to_book['to_c']
+            start = posts_to_book['start']
+            end = posts_to_book['end']
+            price = posts_to_book['price']
+            return render_template("book.html", id=id, from_c=from_c, to_c=to_c, start=start, end=end, price=price)
+    else:
+        return redirect(url_for("login_user"))
 
 
 

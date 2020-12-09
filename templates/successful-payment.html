@@ -1,0 +1,11 @@
+{% extends "layout-user-logined.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/successful.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p>Transaction has been successful!</p>
+    </div>
+{% endblock %}
