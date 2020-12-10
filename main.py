@@ -1,6 +1,7 @@
 from flask import Flask, flash, render_template, url_for, request, redirect, session
 from pymongo import MongoClient
 from bson.json_util import dumps
+from random import randint
 
 app = Flask(__name__)
 app.secret_key = "hkIbg#45f1_"
@@ -29,7 +30,10 @@ def profile():
 @app.route("/purchases", methods=["GET","POST"])
 def purchases():
     if "username_user" in session or "password_user" in session:
-        return render_template("purchases.html")
+        name = session['username_user']
+        name = name.lower()
+        a = users_db.find_one({"username_lower":name})
+        b = a['travels_id']
     else:
         return redirect(url_for("login"))
 
@@ -143,7 +147,7 @@ def register():
             session["username_user"] = username_user
             session["password_user"] = password_user
 
-            users_db.insert_one({"id":id_, "travels_id":[],"username":username_user, "username_lower":username_lower_user, "name":name_user,"last-name":last_name_user,"password":password_user})
+            users_db.insert_one({"id":id_, "booked":[], "travels_id":[],"username":username_user, "username_lower":username_lower_user, "name":name_user,"last-name":last_name_user,"password":password_user})
             return render_template("successful.html")
         else:
             return render_template("register.html")
@@ -192,7 +196,7 @@ def panel():
                 price = request.form['price']
                 seats = request.form['seats']
 
-                posts_db.insert_one({"id":id_, "from_c":from_c, "to_c":to_c,"agency":agency,"start":start,"end":end,"price":price,"seats":seats})
+                posts_db.insert_one({"id":id_, "booked":[], "from_c":from_c, "to_c":to_c,"agency":agency,"start":start,"end":end,"price":price,"seats":seats})
                 return render_template("panel.html")
             else:
                 return render_template("panel.html")
@@ -227,6 +231,14 @@ def view():
 
 @app.route("/book/<int:id>", methods=["GET","POST"])
 def book(id):
+
+    posts_to_book = posts_db.find_one({"id":id})
+    l = posts_to_book['seats']
+    l = int(l)
+
+    if l <= 0:
+        return redirect(url_for("home"))
+    
     if "username_user" in session or "password_user" in session:
         if request.method == 'POST':
 
@@ -238,8 +250,6 @@ def book(id):
 
             if card_number == "" or date_1 == "" or date_2 == "" or name_lastname == "" or cvv == "":
                 flash("fail")
-                
-                posts_to_book = posts_db.find_one({"id":id})
 
                 from_c = posts_to_book['from_c']
                 to_c = posts_to_book['to_c']
@@ -248,14 +258,36 @@ def book(id):
                 price = posts_to_book['price']
                 return render_template("book.html", id=id, from_c=from_c, to_c=to_c, start=start, end=end, price=price)
             else:
-
                 name = session["username_user"]
+                name = name.lower()
 
                 travels_id = users_db.find_one({"username_lower":name})
+                post_db = posts_db.find_one({"id":id})
 
                 travels_id['travels_id'].insert(0,id)
                 x = travels_id['travels_id']
+                
+                booking = randint(100,10000000)
 
+                for i in post_db['booked']:
+                    if booking == i:
+                        booking = randint(100,10000000)
+                
+                post_db['booked'].insert(0,booking)
+                bo = post_db['booked']
+
+                travels_id['booked'].insert(0,booking)
+                boo = post_db['booked']
+
+                flash(f"Your book id is: {booking}")
+
+                seats_int = post_db['seats']
+                seats_int = int(seats_int)
+                seats = seats_int - 1
+                
+                posts_db.update_one({"id":id}, {"$set": {"booked":bo}})
+                posts_db.update_one({"id":id}, {"$set": {"seats":seats}})
+                users_db.update_one({"username_lower":name}, {"$set": {"booked":boo}})
                 users_db.update_one({"username_lower":name}, {"$set": {"travels_id":x}})
                 return redirect(url_for("successful"))
 
