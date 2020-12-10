@@ -62,3 +62,19 @@ li div h1 {
 .delete:hover {
     background-color: rgba(242, 0, 84, 0.7);
 }
+
+.book {
+    text-decoration:none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #45B4E6;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book:hover {
+    background-color: rgba(69, 180, 230, 0.7);
+}

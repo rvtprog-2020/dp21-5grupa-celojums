@@ -360,5 +360,21 @@ def delete(id):
 
 
 
+@app.route("/view/<int:id>", methods=["GET","POST"])
+def view_book(id):
+    if "name" in session and "password" in session:
+        if session["name"] == "root" and session["password"] == "sb3125":
+            post_to_view = posts_db.find_one({"id":id})
+            view = post_to_view['booked']
+            if view == []:
+                view = "Nothing..."
+            return render_template("view-book.html",view=view)
+        else:
+            return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
+
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
