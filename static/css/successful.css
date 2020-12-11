@@ -6,3 +6,13 @@
 .container p {
     font-size: 30px;
 }
+
+.box {
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    width: 70%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}

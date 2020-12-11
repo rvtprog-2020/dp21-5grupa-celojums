@@ -20,23 +20,6 @@ def posts():
     data = list(data_posts)
     return dumps(data)
 
-@app.route("/profile", methods=["GET","POST"])
-def profile():
-    if "username_user" in session or "password_user" in session:
-        return render_template("profile.html")
-    else:
-        return redirect(url_for("login"))
-
-@app.route("/purchases", methods=["GET","POST"])
-def purchases():
-    if "username_user" in session or "password_user" in session:
-        name = session['username_user']
-        name = name.lower()
-        a = users_db.find_one({"username_lower":name})
-        b = a['travels_id']
-    else:
-        return redirect(url_for("login"))
-
 @app.route("/", methods=["GET","POST"])
 def index():
     return render_template("index.html")
@@ -278,8 +261,15 @@ def book(id):
 
                 travels_id['booked'].insert(0,booking)
                 boo = post_db['booked']
+                
+                data = post_db['start']
+                data2 = post_db['end']
 
                 flash(f"Your book id is: {booking}")
+                flash(f"Flight id is: {id}")
+                flash(f"Start date: {data}")
+                flash(f"End date: {data2}")
+
 
                 seats_int = post_db['seats']
                 seats_int = int(seats_int)
