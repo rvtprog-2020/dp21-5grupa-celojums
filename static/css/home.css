@@ -19,6 +19,7 @@
     color: rgb(21, 38, 73);
     font-size: 80px;
     font-weight: 30;
+    margin-top: 30px;
 }
 
 .container .h2-logo h2 {
@@ -27,8 +28,39 @@
     font-size: 2.28571em;
     font-weight: 500;
     margin-bottom: 10px;
+    margin-top: 30px;
 }
 
+.travel-new {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1120px;
+    box-shadow: 0 4px 16px #ccc;
+    margin: 50px auto;
+    border-radius: 4px;
+}
+
+.travel-new p {
+    font-size: 30px;
+}
+
+.travel-new-left {
+    width: 45%;
+    padding: 30px 0 10px 30px;
+}
+
+.travel-new-right {
+    height: 360px;
+    width: 54%;
+    order: 1;
+}
+
+.travel-new-right img{
+    width: 605px;
+    height: 360px;
+    border-radius: 4px;
+}
 .travels-rows:after {
     content: "";
     display: table;
@@ -40,6 +72,7 @@
     float: left;
     width: 33.33%;
     padding: 10px;
+    margin-top: 30px;
 }
 
 .travels-mini {
@@ -54,6 +87,8 @@
 .travels-mini img{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    height: 250px;
+    width: 345px;
 }
 
 .botton-box {
@@ -91,9 +126,11 @@
     font-size: 15px;
     color: #4A4A4A;
     margin-right: 4px;
+    margin-top: 10px;
 }
 
 .euro {
     font-weight:normal;
     font-size: 25px;
+    margin-left: 5px;
 }
