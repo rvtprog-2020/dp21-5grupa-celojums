@@ -1,21 +1,20 @@
-{% extends "layout-user-logined.html" %}
+{% extends "navbar.html" %}
 
 {% block link %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/successful.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/successful-payment.css')}}">
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="box">
-            <p>Transaction has been successful!</p>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
+<div class="container">
+    <div class="box">
+        <p>Transaction has been successful!</p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </div>
+</div>
 {% endblock %}

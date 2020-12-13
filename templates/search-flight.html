@@ -1,0 +1,15 @@
+{% extends "navbar.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search-flight.css')}}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/getFlights-user.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="search-box">
+    <input type="text" id="search-info" placeholder="Search your travel...">
+</div>
+<ul class="list_ul" id="posts">
+
+</ul>
+{% endblock %}

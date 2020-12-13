@@ -1,9 +1,9 @@
 # Flask Project authors:
 
   - Oļegs Pašins - Programmer/Designer | (HTML + CSS + Python + MongoDB + JavaScript)
-  - Aleksejs Sviklis - Programmer | (CSS + HTML + Python + JavaScript)
   - Ģlebs Jevsikovs - Designer | (HTML + JavaScript + CSS + Figma)
-  - Daniils Srednikavs - Designer | (JavaScript + CSS + Figma)
+  - Daniils Srednikavs - Designer | (HTML + JavaScript + CSS + Figma)
+  - Aleksejs Sviklis - Programmer | (HTML + CSS + Python)
 
 # URL's:
 

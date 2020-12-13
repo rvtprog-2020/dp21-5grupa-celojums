@@ -1,7 +1,8 @@
-{% extends "layout-admin.html" %}
+{% extends "navbar.html" %}
 
 {% block link %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/control-panel.css')}}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/getFlights-admin.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -55,4 +56,8 @@
             </div>
         </form>
     </div>
+
+    <ul class="list_ul" id="posts">
+
+    </ul>
 {% endblock %}

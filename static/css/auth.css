@@ -7,7 +7,6 @@ body {
     height: 100vh;
     font-family: sans-serif;
     background: rgb(237,237,237);
-    background: linear-gradient(0deg, rgba(237,237,237,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 form {
@@ -18,7 +17,15 @@ form {
     box-shadow: 0 4px 16px #ccc;
 }
 
-.button-box {
+.login {
+    width: 250px;
+    padding: 50px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px #ccc;
+}
+
+.button-box, .button-box-login{
     margin-bottom: 0px;
     text-align: center;
 }
@@ -67,6 +74,22 @@ button {
 button:hover, button:focus {
     background-color: rgba(0, 113, 240, 0.7);
 }
+
+.button-box-login button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(0, 113, 240);
+    outline: none;
+    transition: 0.3s;
+}
+
+.button-box-login button:hover, .button-box-login button:focus {
+    background-color: rgba(0, 113, 240, 0.7);
+    cursor: pointer;
+}
+
 
 .row {
     margin-bottom: 0;

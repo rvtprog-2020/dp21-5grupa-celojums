@@ -7,19 +7,19 @@ let isTrue6 = false;
 let botton = document.getElementById("botton");
 
 window.addEventListener("load", function(){
-    var username = document.getElementById("username");
+    var email = document.getElementById("email");
     var name = document.getElementById("name");
     var lastName = document.getElementById("last-name");
     var password = document.getElementById("password");
     var passwordConfirm = document.getElementById("password-confirm");
     var robot = document.getElementById("robot");
 
-    username.addEventListener("keyup", function(){
-        if (username.value.length >= 2) {
-            document.getElementById("username").style.cssText = "border-bottom: 1px solid green";
+    email.addEventListener("keyup", function(){
+        if (email.value.length >= 5) {
+            document.getElementById("email").style.cssText = "border-bottom: 1px solid green";
             isTrue1 = true;
         } else {
-            document.getElementById("username").style.cssText = "border-bottom: 1px solid rgba(255, 0, 0, 0.5)";
+            document.getElementById("email").style.cssText = "border-bottom: 1px solid rgba(255, 0, 0, 0.5)";
             isTrue1 = false;
         }
         submit()

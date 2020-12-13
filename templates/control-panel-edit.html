@@ -1,11 +1,11 @@
-{% extends "layout-admin.html" %}
+{% extends "navbar.html" %}
 
 {% block link %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/control-panel-edit.css')}}">
 {% endblock %}
 
 {% block body %}
-    <form action="/update/{{id}}" method="POST">
+    <form action="" method="POST">
         <h1>Edit post</h1>
         <div>
             <input type="text" name="from" placeholder="From county" value="{{from_c}}">
@@ -30,7 +30,7 @@
         </div>
         <div>
             <input type="submit" value="Update"> 
-            <a class="cancel" href="/view">Cancel</a>
+            <a class="cancel" href="/control-panel">Cancel</a>
             <a class="refresh" href="">Refresh</a>
         </div>
     </form>

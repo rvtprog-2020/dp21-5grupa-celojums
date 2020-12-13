@@ -1,0 +1,16 @@
+{% extends "navbar.html" %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/books.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>All user's book:</h1>
+        <p>{{view}}</p>
+        <div class="buttons">
+            <a class="button" href="/control-panel">Go back</a>
+        </div>
+    </div>
+{% endblock %}

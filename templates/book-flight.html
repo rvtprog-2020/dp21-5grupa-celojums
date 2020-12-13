@@ -1,7 +1,7 @@
-{% extends "layout-user-logined.html" %}
+{% extends "navbar.html" %}
 
 {% block link %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/book-flight.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -19,18 +19,18 @@
                 </div>
                 <div class="flash">
                     <p>
-                  {% with messages = get_flashed_messages() %}
+                {% with messages = get_flashed_messages() %}
                     {% if messages %}
-                      {% for msg in messages %}
+                    {% for msg in messages %}
                         You have not fully entered payment details
-                      {% endfor %}
+                    {% endfor %}
                     {% endif %}
-                  {% endwith %}
+                {% endwith %}
                     </p>
                 </div>
             </div>
             <div class="col">
-                <form action="/book/{{id}}" method="POST">
+                <form action="/book-flight/{{id}}" method="POST">
                     <h1>Please input your card details</h1>
                     <div>
                         <div class="label">
