@@ -156,7 +156,7 @@ def register():
 
             session["auth"] = email
 
-            client_db.insert_one({"id":id_,"booked":[],"email":email,"name":name,"last-name":last_name,"password":password,"admin":False})
+            client_db.insert_one({"id":id_,"booked":[],"email":email,"name":name,"last-name":last_name,"password":password})
             return render_template("successful-registration.html")
         else:
             return render_template("register.html")
