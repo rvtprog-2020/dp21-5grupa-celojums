@@ -118,10 +118,6 @@ def book(id):
     else:
         return redirect(url_for("login"))
 
-@app.route('/user-profile', methods=["GET","POST"])
-def profile():
-    return render_template("user-profile.html")
-
 @app.route('/register', methods=["GET","POST"])
 def register():
     if "auth" in session:
